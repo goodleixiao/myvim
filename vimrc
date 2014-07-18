@@ -683,3 +683,5 @@ let NERDTreeIgnore = ['\.pyc$','\.sock$']
 
 let g:vdebug_features = {'max_depth':3}
 let g:tork_pre_command = "rvm use default@global > /dev/null"
+
+Bundle 'shawncplus/phpcomplete.vim'
