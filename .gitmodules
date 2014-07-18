@@ -1,3 +1,15 @@
 [submodule "bundle/vundle"]
 	path = bundle/vundle
 	url = https://github.com/gmarik/vundle.git
+[submodule "bundle/emmet-vim"]
+	path = bundle/emmet-vim
+	url = http://github.com/mattn/emmet-vim.git
+[submodule "bundle/phpcomplete.vim"]
+	path = bundle/phpcomplete.vim
+	url = http://github.com/shawncplus/phpcomplete.vim.git
+[submodule "bundle/vim-commentary"]
+	path = bundle/vim-commentary
+	url = http://github.com/tpope/vim-commentary.git
+[submodule "bundle/vim-objc"]
+	path = bundle/vim-objc
+	url = https://github.com/b4winckler/vim-objc.git
