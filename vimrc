@@ -1,5 +1,61 @@
  " Configuration file for vim
 
+syntax on "高亮
+set number "设置显示行号
+set foldmethod=manual "设置折叠方式手动
+set cin "实现c程序的缩进
+set sta "插入<tab>时使用'shift width'
+set backspace=2 "在插入模式下使用<BS>删除光标前面的字符
+set nocompatible "去掉vi兼容模式
+filetype on "检测文件的类型
+set history=1000 "记录历史的行数
+set background=dark "背景使用黑色
+set autoindent  "设置自动对齐
+set smartindent "设置tab键为4个空格
+set tabstop=4
+set shiftwidth=4
+set showmatch "匹配模式，自动插入
+set ruler "在左下角显示光标的位置的状态行
+set incsearch "快速匹配查找
+set enc=utf-8 "编辑格式
+set winaltkeys=no "alt组合键不映射到菜单上
+set laststatus=2
+set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P>
+set hidden
+set showcmd  "显示输入的命令
+" 插件配置
+set nocp
+filetype plugin on
+filetype plugin indent on
+set tags+=\usr\include\tags
+" 快捷键
+" Ctrl + H  行首
+imap <C-h> <ESC>I
+" Ctrl + J  下一行首
+imap <C-j> <ESC>jI
+" Ctrl + K  上一行末尾
+imap <C-k> <ESC>kA
+" Ctrl + L  末尾
+imap <C-l> <ESC>A
+" tl 打开Taglist
+map tl :Tlist<CR><C-l>
+" 备份配置
+if has("vms")
+	set nobackup
+else
+	set backup
+endif
+" TagList配置
+let Tlist_Show_One_File=1
+let Tlist_Exit_OnlyWindow=1
+let Tlist_Use_Right_Window=1
+let Tlist_File_Fold_Auto_CLose=1
+" :AuthorInfoDetect   自动添加作者、时间等信息，本质是NERD_commenter && authorinfo的结合
+let g:vimrc_author='xiaolei'
+let g:vimrc_email='goodleixiao@sina.cn'
+let g:vimrc_homepage='http://hi.baidu.com/jis2007'
+
+
 set modelines=0" CVE-2007-2438
 
 
@@ -10,11 +66,6 @@ set modelines=0" CVE-2007-2438
 set nocompatible" Use Vim defaults instead of 100% vi compatibility
 
 set backspace=2" more powerful backspacing
-
-
-syntax on
-
-" 语法高亮
 
 
 autocmd InsertLeave * se nocul
