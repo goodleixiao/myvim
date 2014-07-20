@@ -1,5 +1,6 @@
  " Configuration file for vim
 
+let Tlist_Ctags_Cmd = '/usr/local/bin/ctags'
 syntax on "高亮
 set number "设置显示行号
 set foldmethod=manual "设置折叠方式手动
@@ -8,7 +9,7 @@ set sta "插入<tab>时使用'shift width'
 set backspace=2 "在插入模式下使用<BS>删除光标前面的字符
 set nocompatible "去掉vi兼容模式
 filetype on "检测文件的类型
-set history=1000 "记录历史的行数
+set history=100 "记录历史的行数
 set background=dark "背景使用黑色
 set autoindent  "设置自动对齐
 set smartindent "设置tab键为4个空格
@@ -63,11 +64,6 @@ set modelines=0" CVE-2007-2438
 
 " remove change the following statements
 
-set nocompatible" Use Vim defaults instead of 100% vi compatibility
-
-set backspace=2" more powerful backspacing
-
-
 autocmd InsertLeave * se nocul
 
 autocmd InsertEnter * se cul
@@ -105,17 +101,6 @@ set shiftwidth=4
 set noexpandtab
 
 " 不要用空格代替制表符
-
-
-set number
-
-" 显示行号
-
-
-set history=50
-
-" 历史纪录数
-
 
 set hlsearch
 
@@ -735,4 +720,4 @@ let NERDTreeIgnore = ['\.pyc$','\.sock$']
 let g:vdebug_features = {'max_depth':3}
 let g:tork_pre_command = "rvm use default@global > /dev/null"
 
-Bundle 'shawncplus/phpcomplete.vim'
+"Bundle 'shawncplus/phpcomplete.vim'
