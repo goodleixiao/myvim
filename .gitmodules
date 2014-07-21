@@ -1,9 +1,6 @@
 [submodule "bundle/vundle"]
 	path = bundle/vundle
 	url = https://github.com/gmarik/vundle.git
-[submodule "bundle/emmet-vim"]
-	path = bundle/emmet-vim
-	url = http://github.com/mattn/emmet-vim.git
 [submodule "bundle/phpcomplete.vim"]
 	path = bundle/phpcomplete.vim
 	url = http://github.com/shawncplus/phpcomplete.vim.git

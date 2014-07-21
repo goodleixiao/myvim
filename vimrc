@@ -325,6 +325,7 @@ if exists(':Bundle')
     Bundle 'rking/ag.vim'
     Bundle 'othree/html5.vim.git'
     Bundle 'SirVer/ultisnips.git'
+    Bundle "mattn/emmet-vim"
 end
 "}}}
 
