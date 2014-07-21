@@ -6,8 +6,8 @@ myvim
 ====
 
 
-git clone git://github.com/goodleixiao/myvim.git ~/.vim
+  git clone git://github.com/goodleixiao/myvim.git ~/.vim
 
-git submodule init && git submodule update
+  git submodule init && git submodule update
 
-vim  // :BundleInstall
+  vim  // :BundleInstall
