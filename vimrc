@@ -56,6 +56,7 @@ let g:vimrc_author='xiaolei'
 let g:vimrc_email='goodleixiao@sina.cn'
 let g:vimrc_homepage='http://hi.baidu.com/jis2007'
 
+autocmd Filetype php set omnifunc=phpcomplete #CompletePHP
 
 set modelines=0" CVE-2007-2438
 
@@ -326,6 +327,7 @@ if exists(':Bundle')
     Bundle 'othree/html5.vim.git'
     Bundle 'SirVer/ultisnips.git'
     Bundle "mattn/emmet-vim"
+    Bundle 'stephenmckinney/vim-dochub'
 end
 "}}}
 
@@ -721,4 +723,3 @@ let NERDTreeIgnore = ['\.pyc$','\.sock$']
 let g:vdebug_features = {'max_depth':3}
 let g:tork_pre_command = "rvm use default@global > /dev/null"
 
-"Bundle 'shawncplus/phpcomplete.vim'
