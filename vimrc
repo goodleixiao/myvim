@@ -326,8 +326,11 @@ if exists(':Bundle')
     Bundle 'rking/ag.vim'
     Bundle 'othree/html5.vim.git'
     Bundle 'SirVer/ultisnips.git'
-    Bundle "mattn/emmet-vim"
+    Bundle 'mattn/emmet-vim'
     Bundle 'stephenmckinney/vim-dochub'
+    Bundle 'hsanson/vim-android'
+    Bundle 'vim-scripts/javacomplete'
+
 end
 "}}}
 
