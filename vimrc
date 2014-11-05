@@ -1,4 +1,5 @@
 " Configuration file for vim
+" 快捷键
 
 
 "设置一个快捷键
@@ -7,19 +8,8 @@ let mapleader = ","
 set foldmethod=manual "设置折叠方式手动
 
 set history=1000 "记录历史的行数
-set showmatch "匹配模式，自动插入
-set ruler "在左下角显示光标的位置的状态行
-set incsearch "快速匹配查找
-set enc=utf-8 "编辑格式
 set winaltkeys=no "alt组合键不映射到菜单上
-set laststatus=2
-set statusline=%<%f\ %h%m%r%=%-14.(%l,%c%V%)\ %P>
 
-" 插件配置
-set nocp
-filetype plugin on
-filetype plugin indent on
-set tags+=\usr\include\tags
 
 " 快捷键
 " Ctrl + H  行首
@@ -30,8 +20,6 @@ imap <C-j> <ESC>jI
 imap <C-k> <ESC>kA
 " Ctrl + L  末尾
 imap <C-l> <ESC>A
-" tl 打开Taglist
-map tl :Tlist<CR><C-l>
 
 " 备份配置
 if has("vms")
@@ -40,14 +28,9 @@ else
 	set backup
 endif
 
-" :AuthorInfoDetect   自动添加作者、时间等信息，本质是NERD_commenter && authorinfo的结合
-let g:vimrc_author='xiaolei'
-let g:vimrc_email='goodleixiao@sina.cn'
-let g:vimrc_homepage='http://hi.baidu.com/jis2007'
-
 autocmd Filetype php set omnifunc=phpcomplete #CompletePHP
 
-set modelines=0" CVE-2007-2438
+set modelines=0 " CVE-2007-2438
 
 
 " Normally we use vim-extensions. If you want true vi-compatibility
@@ -56,85 +39,79 @@ set modelines=0" CVE-2007-2438
 autocmd InsertLeave * se nocul
 autocmd InsertEnter * se cul
 
-" 用浅色高亮当前行
+" 智能对齐
 set smartindent
 
-" 智能对齐
+" 自动对齐
 set autoindent
 
-" 自动对齐
+" 在处理未保存或只读文件的时候，弹出确认
 set confirm
 
-" 在处理未保存或只读文件的时候，弹出确认
+" Tab键的宽度
 set tabstop=4
 
-" Tab键的宽度
+"  统一缩进为4
 set softtabstop=4
 set shiftwidth=4
 
-"  统一缩进为4
+" 不要用空格代替制表符
 set noexpandtab
 
-" 不要用空格代替制表符
+" 搜索逐字符高亮
 set hlsearch
 set incsearch
 
-" 搜索逐字符高亮
+" 行内替换
 set gdefault
 
-" 行内替换
+" 编码设置
 set encoding=utf-8
-
 set fileencodings=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936,utf-16,big5,euc-jp,latin1
 
-" 编码设置
+" 设置颜色主题
 colorscheme torte
 
-" 设置颜色主题
+" 设置字体
 "set guifont=Menlo:h16:cANSI
 
-" 设置字体
+" 语言设置
 set langmenu=zn_CN.UTF-8
 set helplang=cn
 
-" 语言设置
+" 命令行（在状态行）的高度，默认为1,这里是2
 set cmdheight=2
 
-" 命令行（在状态行）的高度，默认为1,这里是2
+" 在编辑过程中，在右下角显示光标位置的状态行
 set ruler
 
-" 在编辑过程中，在右下角显示光标位置的状态行
+" 总是显示状态行
 set laststatus=2
 
-" 总是显示状态行
+" 在状态行显示目前所执行的命令，未完成的指令片段亦会显示出来
 set showcmd
 
-" 在状态行显示目前所执行的命令，未完成的指令片段亦会显示出来
+" 光标移动到buffer的顶部和底部时保持3行距离
 set scrolloff=3
 
-" 光标移动到buffer的顶部和底部时保持3行距离
+" 高亮显示对应的括号
 set showmatch
 
-" 高亮显示对应的括号
+" 对应括号高亮的时间（单位是十分之一秒）
 set matchtime=5
 
-" 对应括号高亮的时间（单位是十分之一秒）
+" 在切换buffer时自动保存当前文件
 set autowrite
 
-" 在切换buffer时自动保存当前文件
+" 增强模式中的命令行自动完成操作
 set wildmenu
 
-" 增强模式中的命令行自动完成操作
+" 字符间插入的像素行数目
 set linespace=2
 
-" 字符间插入的像素行数目
-set whichwrap=b,s,<,>,[,]
 
 " 开启Normal或Visual模式下Backspace键，空格键，左方向键，右方向键，Insert或replace模式下左方向键，右方向键跳行的功能。
-filetype plugin indent on
-
-" 分为三部分命令：file on, file plugin on, file indent on.分别表示自动识别文件类型，用文件类型脚本，使用缩进定义文件。
-
+set whichwrap=b,s,<,>,[,]
 
 "==================自定义的键映射======================
 vnoremap $1 <esc>`>a)<esc>`<i(<esc>
@@ -189,10 +166,8 @@ au BufWrite /private/etc/pw.* set nowritebackup
 if exists(':let') == 0
     finish
 endif
-set nocompatible               " be iMproved
 
-"filetype off                   " required!
-filetype on "检测文件的类型
+set nocompatible               " be iMproved
 
 if has("win32")
     let g:os = "win"
@@ -252,6 +227,7 @@ if exists(':Bundle')
 end
 "}}}
 
+" 分为三部分命令：file on, file plugin on, file indent on.分别表示自动识别文件类型，用文件类型脚本，使用缩进定义文件。
 filetype plugin indent on     " required!
 syntax enable
 colorscheme jc
@@ -644,10 +620,9 @@ let NERDTreeIgnore = ['\.pyc$','\.sock$']
 let g:vdebug_features = {'max_depth':3}
 let g:tork_pre_command = "rvm use default@global > /dev/null"
 
-""""""""""""""""""""""""""""""""""""""""
+""""""""""""""""""""""""""""""""""""""""""
 " vimrc 编辑支持
 " """"""""""""""""""""""""""""""""""""""""
-
 
 "重新读取 .vimrc
 map <silent> <leader>ss :source ~/.vim/vimrc<cr>
@@ -673,4 +648,18 @@ let Tlist_Use_Right_Window = 1
 let Tlist_File_Fold_Auto_Close=1
 
 "按 F9 关闭后者代开Tlist
-map <silent> <F9> :TlistToggle<cr> 
+map <silent> <F9> :TlistToggle<cr>
+
+" tl 打开Taglist
+map tl :Tlist<CR><C-l>
+
+"""""""""""""""""""""""""""""""""""""""""""""
+" :AuthorInfoDetect
+" 自动添加作者、时间等信息，
+" 本质是NERD_commenter && authorinfo的结合
+"""""""""""""""""""""""""""""""""""""""""""""
+
+let g:vimrc_author='xiaolei'
+let g:vimrc_email='goodleixiao@sina.cn'
+let g:vimrc_homepage='http://hi.baidu.com/jis2007'
+
