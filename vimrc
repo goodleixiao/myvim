@@ -1,15 +1,9 @@
 " Configuration file for vim
-" 快捷键
-
 
 "设置一个快捷键
 let mapleader = ","
 
-set foldmethod=manual "设置折叠方式手动
-
 set history=1000 "记录历史的行数
-set winaltkeys=no "alt组合键不映射到菜单上
-
 
 " 快捷键
 " Ctrl + H  行首
@@ -45,9 +39,6 @@ set smartindent
 " 自动对齐
 set autoindent
 
-" 在处理未保存或只读文件的时候，弹出确认
-set confirm
-
 " Tab键的宽度
 set tabstop=4
 
@@ -68,12 +59,6 @@ set gdefault
 " 编码设置
 set encoding=utf-8
 set fileencodings=utf-8,ucs-bom,shift-jis,gb18030,gbk,gb2312,cp936,utf-16,big5,euc-jp,latin1
-
-" 设置颜色主题
-colorscheme torte
-
-" 设置字体
-"set guifont=Menlo:h16:cANSI
 
 " 语言设置
 set langmenu=zn_CN.UTF-8
@@ -120,41 +105,6 @@ vnoremap $3 <esc>`>a}<esc>`<i{<esc>
 vnoremap $$ <esc>`>a"<esc>`<i"<esc>
 vnoremap $q <esc>`>a'<esc>`<i'<esc>
 vnoremap $e <esc>`>a"<esc>`<i"<esc>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 单键<F7>控制syntax on/off。原因是有时候颜色太多会妨碍阅读。
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
-map <F7> :call OnSyntax() <CR>
-
-func! OnSyntax()
- if exists("syntax_on")
-    syntax off
- else
-    syntax enable
- endif
-endfunc
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" <F5>编译和运行C程序
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <F5> :call CompileRunGcc()<CR>
-func! CompileRunGcc()
-exec "w"
-exec "!gcc % -o %<"
-exec "! ./%<"
-endfunc
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" <F6>编译和运行C++程序
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-map <F6> :call CompileRunGpp<CR>
-func! CompileRunGpp()
-exec "w"
-exec "!g++ % -o %<"
-exec "! ./<"
-endfunc
-
 
 " Don't write backup file if vim is being called by "crontab -e"
 au BufWrite /private/tmp/crontab.* set nowritebackup
@@ -537,7 +487,8 @@ let g:NERDTreeMapHelp = "h"
 
 " Set font for GUI (e.g. GVim)
 if has("gui_running")
-    set guifont=Anonymous\ Pro\ 13
+    "set guifont=Anonymous\ Pro\ 13
+    set guifont=Nimbus\ Mono\ L\ 13
 endif
 
 "{{{ Key Maps
@@ -663,3 +614,40 @@ let g:vimrc_author='xiaolei'
 let g:vimrc_email='goodleixiao@sina.cn'
 let g:vimrc_homepage='http://hi.baidu.com/jis2007'
 
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" 单键<F7>控制syntax on/off。原因是有时候颜色太多会妨碍阅读。
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+
+map <F7> :if exists("syntax_on") <Bar>
+            \ syntax off <BAR>
+            \ else <BAR>
+            \ syntax enable <BAR>
+            \ endif <CR>
+
+""""""""""""""""""""""""""""""""""""""""""""""""
+" 文件列表，用于侧边栏
+""""""""""""""""""""""""""""""""""""""""""""""""
+
+let g:netrw_winsize = 30
+nmap <silent> <leader>fe :Sexplore!<cr>
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" <F5>编译和运行C程序
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <F5> :call CompileRunGcc()<CR>
+func! CompileRunGcc()
+exec "w"
+exec "!gcc % -o %<"
+exec "! ./%<"
+endfunc
+
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" <F6>编译和运行C++程序
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+map <F6> :call CompileRunGpp<CR>
+func! CompileRunGpp()
+exec "w"
+exec "!g++ % -o %<"
+exec "! ./<"
+endfunc
