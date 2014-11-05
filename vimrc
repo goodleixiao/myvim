@@ -1,19 +1,17 @@
 " Configuration file for vim
 
-"设置一个快捷键
-let mapleader = ","
+if exists(':let') == 0
+    finish
+endif
 
-set history=1000 "记录历史的行数
+if has("win32")
+    let g:os = "win"
+elseif has("macos")
+    let g:os = "mac"
+else
+    let g:os = "unix"
+endif
 
-" 快捷键
-" Ctrl + H  行首
-imap <C-h> <ESC>I
-" Ctrl + J  下一行首
-imap <C-j> <ESC>jI
-" Ctrl + K  上一行末尾
-imap <C-k> <ESC>kA
-" Ctrl + L  末尾
-imap <C-l> <ESC>A
 
 " 备份配置
 if has("vms")
@@ -22,13 +20,17 @@ else
 	set backup
 endif
 
+"设置一个快捷键
+let mapleader = ","
+
+set history=1000 "记录历史的行数
+
 autocmd Filetype php set omnifunc=phpcomplete #CompletePHP
 
 set modelines=0 " CVE-2007-2438
 
 
 " Normally we use vim-extensions. If you want true vi-compatibility
-
 " remove change the following statements
 autocmd InsertLeave * se nocul
 autocmd InsertEnter * se cul
@@ -113,19 +115,7 @@ au BufWrite /private/tmp/crontab.* set nowritebackup
 au BufWrite /private/etc/pw.* set nowritebackup
 
 
-if exists(':let') == 0
-    finish
-endif
-
 set nocompatible               " be iMproved
-
-if has("win32")
-    let g:os = "win"
-elseif has("macos")
-    let g:os = "mac"
-else
-    let g:os = "unix"
-endif
 
 if g:os == "win"
     set shell=C:/cygwin/bin/bash
@@ -180,7 +170,7 @@ end
 " 分为三部分命令：file on, file plugin on, file indent on.分别表示自动识别文件类型，用文件类型脚本，使用缩进定义文件。
 filetype plugin indent on     " required!
 syntax enable
-colorscheme jc
+"colorscheme jc "设置样式
 runtime macros/matchit.vim
 let g:EasyMotion_leader_key = '<Space>'
 
@@ -651,3 +641,16 @@ exec "w"
 exec "!g++ % -o %<"
 exec "! ./<"
 endfunc
+
+
+"""""""""""""""""""""""""""""""""""""""
+" 快捷键 在插入模式下
+"""""""""""""""""""""""""""""""""""""""
+" Ctrl + H  行首
+imap <C-h> <ESC>I
+" Ctrl + J  下一行首
+imap <C-j> <ESC>jI
+" Ctrl + K  上一行末尾
+imap <C-k> <ESC>kA
+" Ctrl + L  末尾
+imap <C-l> <ESC>A
