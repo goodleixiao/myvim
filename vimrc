@@ -6,7 +6,7 @@ endif
 
 if has("win32")
     let g:os = "win"
-elseif has("macos")
+elseif has("mac")
     let g:os = "mac"
 else
     let g:os = "unix"
