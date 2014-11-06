@@ -170,7 +170,9 @@ end
 " 分为三部分命令：file on, file plugin on, file indent on.分别表示自动识别文件类型，用文件类型脚本，使用缩进定义文件。
 filetype plugin indent on     " required!
 syntax enable
+hi ExtraSpace   ctermbg=red          guibg=red
 "colorscheme jc "设置样式
+"colorscheme torte
 runtime macros/matchit.vim
 let g:EasyMotion_leader_key = '<Space>'
 
