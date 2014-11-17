@@ -25,8 +25,6 @@ let mapleader = ","
 
 set history=1000 "记录历史的行数
 
-autocmd Filetype php set omnifunc=phpcomplete #CompletePHP
-
 set modelines=0 " CVE-2007-2438
 
 
@@ -148,10 +146,10 @@ if exists(':Bundle')
     Bundle 'kchmck/vim-coffee-script'
     Bundle 'scrooloose/nerdtree.git'
     Bundle 'kien/ctrlp.vim'
-    Bundle 'joonty/vim-phpqa.git'
+    "Bundle 'joonty/vim-phpqa.git'
     Bundle 'joonty/vim-sauce.git'
     Bundle 'joonty/vdebug.git'
-    Bundle 'joonty/vim-phpunitqf.git'
+    "Bundle 'joonty/vim-phpunitqf.git'
     Bundle 'joonty/vim-taggatron.git'
     Bundle 'tpope/vim-fugitive.git'
     Bundle 'tpope/vim-rails.git'
@@ -563,8 +561,7 @@ let NERDTreeIgnore = ['\.pyc$','\.sock$']
 let g:vdebug_features = {'max_depth':3}
 let g:tork_pre_command = "rvm use default@global > /dev/null"
 
-""""""""""""""""""""""""""""""""""""""""""
-" vimrc 编辑支持
+"{{{1 vimrc 编辑支持
 " """"""""""""""""""""""""""""""""""""""""
 
 "重新读取 .vimrc
@@ -573,9 +570,8 @@ map <silent> <leader>ss :source ~/.vim/vimrc<cr>
 map <silent> <leader>ee :e ~/.vim/vimrc<cr>
 "编辑完vimrc文件后，重新载入该文件
 autocmd! bufwritepost  vimrc source ~/.vim/vimrc
-
-""""""""""""""""""""""""""""""""""""""""""""
-"  Tag list
+"}}}
+"{{{1  Tag list
 """"""""""""""""""""""""""""""""""""""""""""
 
 "设置tags程序的位置
@@ -595,20 +591,16 @@ map <silent> <F9> :TlistToggle<cr>
 
 " tl 打开Taglist
 map tl :Tlist<CR><C-l>
-
-"""""""""""""""""""""""""""""""""""""""""""""
-" :AuthorInfoDetect
-" 自动添加作者、时间等信息，
+"}}}
+"{{{1 :AuthorInfoDetect 自动添加作者、时间等信息，
 " 本质是NERD_commenter && authorinfo的结合
 """""""""""""""""""""""""""""""""""""""""""""
 
 let g:vimrc_author='xiaolei'
 let g:vimrc_email='goodleixiao@sina.cn'
 let g:vimrc_homepage='http://hi.baidu.com/jis2007'
-
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" 单键<F7>控制syntax on/off。原因是有时候颜色太多会妨碍阅读。
+"}}}
+"{{{1 单键<F7>控制syntax on/off。原因是有时候颜色太多会妨碍阅读。
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 
 map <F7> :if exists("syntax_on") <Bar>
@@ -616,16 +608,14 @@ map <F7> :if exists("syntax_on") <Bar>
             \ else <BAR>
             \ syntax enable <BAR>
             \ endif <CR>
-
-""""""""""""""""""""""""""""""""""""""""""""""""
-" 文件列表，用于侧边栏
+"}}}
+"{{{1 文件列表，用于侧边栏
 """"""""""""""""""""""""""""""""""""""""""""""""
 
 let g:netrw_winsize = 30
 nmap <silent> <leader>fe :Sexplore!<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" <F5>编译和运行C程序
+"}}}
+"{{{1 <F5>编译和运行C程序
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <F5> :call CompileRunGcc()<CR>
 func! CompileRunGcc()
@@ -633,9 +623,8 @@ exec "w"
 exec "!gcc % -o %<"
 exec "! ./%<"
 endfunc
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" <F6>编译和运行C++程序
+"}}}
+"{{{1 <F6>编译和运行C++程序
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
 map <F6> :call CompileRunGpp<CR>
 func! CompileRunGpp()
@@ -643,10 +632,8 @@ exec "w"
 exec "!g++ % -o %<"
 exec "! ./<"
 endfunc
-
-
-"""""""""""""""""""""""""""""""""""""""
-" 快捷键 在插入模式下
+"}}}
+"{{{1 快捷键 在插入模式下
 """""""""""""""""""""""""""""""""""""""
 " Ctrl + H  行首
 imap <C-h> <ESC>I
@@ -656,3 +643,4 @@ imap <C-j> <ESC>jI
 imap <C-k> <ESC>kA
 " Ctrl + L  末尾
 imap <C-l> <ESC>A
+"}}}
