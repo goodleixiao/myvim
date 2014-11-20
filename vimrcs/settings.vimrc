@@ -1,7 +1,7 @@
 "{{{ Settings
 set ttyscroll=0
 set hidden
-set history=1000
+set history=1000 "记录历史条数
 set ruler
 set ignorecase
 set smartcase

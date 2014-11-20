@@ -23,8 +23,6 @@ endif
 "设置一个快捷键
 let mapleader = ","
 
-set history=1000 "记录历史的行数
-
 set modelines=0 " CVE-2007-2438
 
 
@@ -529,7 +527,7 @@ nnoremap <Leader>a :Git add %:p<CR>
 " Quick insert mode exit
 imap jk <Esc>
 
-" Tree of nerd
+" Tree of nerd  文件浏览侧边栏
 nnoremap <Leader>n :NERDTreeToggle<CR>
 
 " Show trailing white space
@@ -608,12 +606,6 @@ map <F7> :if exists("syntax_on") <Bar>
             \ else <BAR>
             \ syntax enable <BAR>
             \ endif <CR>
-"}}}
-"{{{1 文件列表，用于侧边栏
-""""""""""""""""""""""""""""""""""""""""""""""""
-
-let g:netrw_winsize = 30
-nmap <silent> <leader>fe :Sexplore!<cr>
 "}}}
 "{{{1 <F5>编译和运行C程序
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""
