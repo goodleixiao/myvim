@@ -30,6 +30,8 @@ set modelines=0 " CVE-2007-2438
 " remove change the following statements
 autocmd InsertLeave * se nocul
 autocmd InsertEnter * se cul
+autocmd BufNewFile,BufReadPost *.md set filetype=markdown
+
 
 " 智能对齐
 set smartindent
@@ -160,6 +162,7 @@ if exists(':Bundle')
     Bundle 'SirVer/ultisnips.git'
     Bundle "mattn/emmet-vim"
     Bundle 'stephenmckinney/vim-dochub'
+    Bundle 'plasticboy/vim-markdown.git'
 end
 "}}}
 
