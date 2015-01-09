@@ -20,6 +20,8 @@ else
 	set backup
 endif
 
+"let g:android_sdk_path = '/home/xiaolei/applicate/android/sdk'
+
 "设置一个快捷键
 let mapleader = ","
 
@@ -163,6 +165,7 @@ if exists(':Bundle')
     Bundle "mattn/emmet-vim"
     Bundle 'stephenmckinney/vim-dochub'
     Bundle 'plasticboy/vim-markdown.git'
+    Bundle 'hsanson/vim-android'
 end
 "}}}
 
