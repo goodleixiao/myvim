@@ -164,7 +164,7 @@ if exists(':Bundle')
     Bundle 'SirVer/ultisnips.git'
     Bundle "mattn/emmet-vim"
     Bundle 'stephenmckinney/vim-dochub'
-    Bundle 'plasticboy/vim-markdown.git'
+    "Bundle 'plasticboy/vim-markdown.git'
     Bundle 'hsanson/vim-android'
 end
 "}}}
