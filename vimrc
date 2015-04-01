@@ -20,8 +20,6 @@ else
 	set backup
 endif
 
-"let g:android_sdk_path = '/home/xiaolei/applicate/android/sdk'
-
 "设置一个快捷键
 let mapleader = ","
 
@@ -194,6 +192,17 @@ function! RestartRails(dir)
         echohl Error | echo "Failed to restart rails - is your working directory a rails app?" | echohl None
     endif
 endfunction
+"}}}
+"{{{ Source vimrc files in a directory
+function! SourceAllFiles(dir)
+    let l:findop=system("find ".a:dir." -name \"*.vimrc\"")
+    let l:sourcenames=split(l:findop,"\n")
+    for fname in l:sourcenames
+        exec "source ".fname
+    endfor
+endfunction
+
+call SourceAllFiles($HOME."/.vim/vimrcs")
 "}}}
 "{{{ Open URL in browser
 
@@ -410,6 +419,9 @@ function! FindAndReplace(...)
 endfunction
 
 "}}}
+"{{{ Link 'Call' to 'call', for mistyping
+command! -nargs=* -complete=function Call exec 'call '.<f-args>
+"}}}
 "{{{ Toggle relative and absolute line numbers
 function! LineNumberToggle()
   if(&relativenumber == 1)
@@ -461,71 +473,6 @@ function! DisableArrowKeys()
   inoremap <Right> <nop>
 endfunc
 "}}}
-"}}}
-
-"{{{ Commands
-" Common mistypings
-command! -nargs=* -complete=function Call exec 'call '.<f-args>
-command! Q q
-command! -bang Q q<bang>
-command! Qall qall
-command! -bang Qall qall<bang>
-command! W w
-command! -nargs=1 -complete=file E e <args>
-command! -bang -nargs=1 -complete=file E e<bang> <args>
-command! -nargs=1 -complete=tag Tag tag <args>
-" Save a file that requires sudoing even when
-" you opened it as a normal user.
-command! Sw w !sudo tee % > /dev/null
-" Show difference between modified buffer and original file
-command! DiffSaved call s:DiffWithSaved()
-"}}}
-
-"{{{ Settings
-set ttyscroll=0
-set hidden
-set history=1000
-set ruler
-set ignorecase
-set smartcase
-set title
-set scrolloff=3
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set wrapscan
-set clipboard=unnamed
-set visualbell
-set backspace=indent,eol,start
-"Status line coolness
-set laststatus=2
-set showcmd
-" Search things
-set hlsearch
-set incsearch " ...dynamically as they are typed.
-set listchars=tab:>-,trail:·,eol:$
-" Folds
-set foldmethod=marker
-set wildmenu
-set wildmode=list:longest,full
-set mouse=a
-set nohidden
-set shortmess+=filmnrxoOt
-set viewoptions=folds,options,cursor,unix,slash
-set virtualedit=onemore
-set shell=bash\ --login
-
-"Spaces, not tabs
-set shiftwidth=4
-set tabstop=4
-set expandtab
-
-"Speed highlighting up
-set nocursorcolumn
-set nocursorline
-syntax sync minlines=256
-
-" Line numbers
-set relativenumber
 "}}}
 
 "Fugitive (Git) in status line
@@ -592,7 +539,6 @@ imap jk <Esc>
 nnoremap <Leader>n :NERDTreeToggle<CR>
 
 " Show trailing white space
-hi ExtraSpace ctermbg=red guibg=red
 match ExtraSpace /\s\+$/
 autocmd BufWinEnter * match ExtraSpace /\s\+$/
 autocmd InsertEnter * match ExtraSpace /\s\+\%#\@<!$/
