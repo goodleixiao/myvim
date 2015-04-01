@@ -12,14 +12,13 @@ else
     let g:os = "unix"
 endif
 
-
 " Don't write backup file if vim is being called by "crontab -e"
 au BufWrite /private/tmp/crontab.* set nowritebackup
 
 " Don't write backup file if vim is being called by "chpass"
 au BufWrite /private/etc/pw.* set nowritebackup
 
-
+" 去掉vi老版本兼容模式
 set nocompatible               " be iMproved
 
 if g:os == "win"
@@ -71,7 +70,6 @@ if exists(':Bundle')
     Bundle 'stephenmckinney/vim-dochub'
     Bundle 'hsanson/vim-android'
     Bundle 'vim-scripts/javacomplete'
-    Bundle 'plasticboy/vim-markdown.git'
     Bundle 'nathanaelkane/vim-indent-guides.git'
     Bundle 'Lokaltog/vim-powerline.git'
     Bundle 'fholgado/minibufexpl.vim.git'
@@ -80,6 +78,7 @@ end
 
 " 分为三部分命令：file on, file plugin on, file indent on.分别表示自动识别文件类型，用文件类型脚本，使用缩进定义文件。
 filetype plugin indent on     " required!
+" 开启高亮
 syntax enable
 hi ExtraSpace   ctermbg=red          guibg=red
 "colorscheme jc "设置样式
@@ -383,8 +382,14 @@ endfunc
 "}}}
 
 "Fugitive (Git) in status line
+" Powerline 插件
+let g:Powerline_colorscheme = 'solarized256'
+let g:Powerline_stl_path_style = 'relative'
+set t_Co=256 "设置terminal支持的颜色
+let g:Powerline_cache_dir = simplify(expand('<sfile>:p:h') .'/..')
+set laststatus=2
+"set statusline=%{exists(\"*fugitive#statusline\")?\"branch:\ \".fugitive#statusline():\"\"}\ %F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
 
-set statusline=%{exists(\"*fugitive#statusline\")?\"branch:\ \".fugitive#statusline():\"\"}\ %F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
 
 let g:NERDTreeMapHelp = "h"
 
@@ -394,56 +399,6 @@ if has("gui_running")
     set guifont=Nimbus\ Mono\ L\ 13
 endif
 
-"{{{ Key Maps
-" Fast saving
-nnoremap <Leader>w :w<CR>
-vnoremap <Leader>w <Esc>:w<CR>
-nnoremap <C-s> :w<CR>
-inoremap <C-s> <Esc>:w<CR>
-vnoremap <C-s> <Esc>:w<CR>
-
-nnoremap <Leader>x :x<CR>
-vnoremap <Leader>x <Esc>:x<CR>
-
-" Stop that damn ex mode
-nnoremap Q <nop>
-
-" Quick nohl
-nnoremap <Leader>h :nohl<CR>
-
-" Line number type toggle
-nnoremap <Leader>l :call LineNumberToggle()<cr>
-
-" CtrlP
-nnoremap <Leader>t :CtrlP getcwd()<CR>
-nnoremap <Leader>f :CtrlPClearAllCaches<CR>
-nnoremap <Leader>b :CtrlPBuffer<CR>
-nnoremap <Leader>j :CtrlP ~/<CR>
-nnoremap <Leader>p :CtrlP<CR>
-
-" Instead of 1 line, move 3 at a time
-nnoremap <C-e> 3<C-e>
-nnoremap <C-y> 3<C-y>
-
-" Show hidden characters (spaces, tabs, etc)
-nmap <silent> <leader>s :set nolist!<CR>
-
-" PHPDoc commands
-inoremap <C-d> <ESC>:call PhpDocSingle()<CR>i
-nnoremap <C-d> :call PhpDocSingle()<CR>
-vnoremap <C-d> :call PhpDocRange()<CR>
-
-" Fugitive shortcuts
-nnoremap <Leader>c :Gcommit -a<CR>i
-nnoremap <Leader>g :Git
-nnoremap <Leader>a :Git add %:p<CR>
-"}}}
-
-" Quick insert mode exit
-imap jk <Esc>
-
-" Tree of nerd  文件浏览侧边栏
-nnoremap <Leader>n :NERDTreeToggle<CR>
 
 " Show trailing white space
 match ExtraSpace /\s\+$/
@@ -474,16 +429,6 @@ let NERDTreeIgnore = ['\.pyc$','\.sock$']
 let g:vdebug_features = {'max_depth':3}
 let g:tork_pre_command = "rvm use default@global > /dev/null"
 
-"{{{1 vimrc 编辑支持
-" """"""""""""""""""""""""""""""""""""""""
-
-"重新读取 .vimrc
-map <silent> <leader>ss :source ~/.vim/vimrc<cr>
-"编辑 vimrc
-map <silent> <leader>ee :e ~/.vim/vimrc<cr>
-"编辑完vimrc文件后，重新载入该文件
-autocmd! bufwritepost  vimrc source ~/.vim/vimrc
-"}}}
 "{{{1  Tag list
 """"""""""""""""""""""""""""""""""""""""""""
 
@@ -540,14 +485,4 @@ exec "!g++ % -o %<"
 exec "! ./<"
 endfunc
 "}}}
-"{{{1 快捷键 在插入模式下
-"""""""""""""""""""""""""""""""""""""""
-" Ctrl + H  行首
-imap <C-h> <ESC>I
-" Ctrl + J  下一行首
-imap <C-j> <ESC>jI
-" Ctrl + K  上一行末尾
-imap <C-k> <ESC>kA
-" Ctrl + L  末尾
-imap <C-l> <ESC>A
-"}}}
+
