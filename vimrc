@@ -73,6 +73,7 @@ if exists(':Bundle')
     Bundle 'nathanaelkane/vim-indent-guides.git'
     Bundle 'Lokaltog/vim-powerline.git'
     Bundle 'fholgado/minibufexpl.vim.git'
+    Bundle 'majutsushi/tagbar.git'
 end
 "}}}
 
