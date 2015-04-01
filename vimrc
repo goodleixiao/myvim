@@ -167,6 +167,9 @@ if exists(':Bundle')
     Bundle 'hsanson/vim-android'
     Bundle 'vim-scripts/javacomplete'
     Bundle 'plasticboy/vim-markdown.git'
+    Bundle 'nathanaelkane/vim-indent-guides.git'
+    Bundle 'Lokaltog/vim-powerline.git'
+    Bundle 'fholgado/minibufexpl.vim.git'
 end
 "}}}
 
