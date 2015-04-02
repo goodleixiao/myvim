@@ -80,6 +80,15 @@ set wildmenu
 " 字符间插入的像素行数目
 set linespace=2
 
+"十字高亮选择区
+set cuc cul
+set cursorline
+
+"代码超过80列提示
+set cc=80
+
+"无视代码位置任意停留
+"set ve=all
 
 " 开启Normal或Visual模式下Backspace键，空格键，左方向键，右方向键，Insert或replace模式下左方向键，右方向键跳行的功能。
 set whichwrap=b,s,<,>,[,]

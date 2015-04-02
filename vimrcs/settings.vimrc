@@ -13,9 +13,7 @@ set wrapscan
 set clipboard=unnamed
 set visualbell
 set backspace=indent,eol,start
-"Status line coolness
-set laststatus=2
-set showcmd
+
 " Search things
 set hlsearch
 set incsearch " ...dynamically as they are typed.
@@ -37,9 +35,9 @@ set tabstop=4
 set expandtab
 
 "Speed highlighting up
-set nocursorcolumn
-set nocursorline
-syntax sync minlines=256
+"set nocursorcolumn
+"set nocursorline
+"syntax sync minlines=256
 
 " Line numbers
 set relativenumber

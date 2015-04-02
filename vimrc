@@ -74,16 +74,24 @@ if exists(':Bundle')
     Bundle 'Lokaltog/vim-powerline.git'
     Bundle 'fholgado/minibufexpl.vim.git'
     Bundle 'majutsushi/tagbar.git'
+    Bundle 'altercation/vim-colors-solarized.git'
 end
 "}}}
+
+set t_Co=256 "设置terminal支持的颜色
 
 " 分为三部分命令：file on, file plugin on, file indent on.分别表示自动识别文件类型，用文件类型脚本，使用缩进定义文件。
 filetype plugin indent on     " required!
 " 开启高亮
 syntax enable
+let g:solarized_termcolors=256
+set background=dark
+colorscheme solarized
+
+
+
 hi ExtraSpace   ctermbg=red          guibg=red
-"colorscheme jc "设置样式
-"colorscheme torte
+
 runtime macros/matchit.vim
 let g:EasyMotion_leader_key = '<Space>'
 
@@ -384,14 +392,7 @@ endfunc
 
 "Fugitive (Git) in status line
 " Powerline 插件
-let g:Powerline_colorscheme = 'solarized256'
-let g:Powerline_stl_path_style = 'relative'
-set t_Co=256 "设置terminal支持的颜色
-let g:Powerline_cache_dir = simplify(expand('<sfile>:p:h') .'/..')
-set laststatus=2
-"set statusline=%{exists(\"*fugitive#statusline\")?\"branch:\ \".fugitive#statusline():\"\"}\ %F%m%r%h%w\ (%{&ff}){%Y}\ [%l,%v][%p%%]
-
-
+" let g:Powerline_colorscheme = 'solarized256'
 let g:NERDTreeMapHelp = "h"
 
 " Set font for GUI (e.g. GVim)
