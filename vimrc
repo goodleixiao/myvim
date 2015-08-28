@@ -68,7 +68,7 @@ if exists(':Bundle')
     Bundle 'SirVer/ultisnips.git'
     Bundle 'mattn/emmet-vim'
     Bundle 'stephenmckinney/vim-dochub'
-    Bundle 'hsanson/vim-android'
+    "Bundle 'hsanson/vim-android'
     Bundle 'vim-scripts/javacomplete'
     Bundle 'nathanaelkane/vim-indent-guides.git'
     Bundle 'Lokaltog/vim-powerline.git'
@@ -84,7 +84,8 @@ set t_Co=256 "设置terminal支持的颜色
 filetype plugin indent on     " required!
 " 开启高亮
 syntax enable
-let g:solarized_termcolors=256
+let g:solarized_termtrans = 1
+"let g:solarized_termcolors=256
 set background=dark
 colorscheme solarized
 
