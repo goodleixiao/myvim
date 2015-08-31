@@ -134,3 +134,16 @@ Use `:diffthis` when opening multiple files to run `:diffthis` on the first 4 fi
 
 Check `:help ctrlp-options` for other options.
 
+cscope_maps.vim
+=====================
+
+[ctrl+\]
+
+    s：查找C代码符号
+    g：查找本定义
+    d：查找本函数调用的函数
+    c：查找调用本函数的函数
+    t：查找本字符串
+    e：查找本egrep模式
+    f：查找本文件
+    i：查找包含本文件的文件
