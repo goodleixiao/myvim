@@ -12,6 +12,9 @@ else
     let g:os = "unix"
 endif
 
+"设置一个快捷键
+let mapleader = ","
+
 " Don't write backup file if vim is being called by "crontab -e"
 au BufWrite /private/tmp/crontab.* set nowritebackup
 

@@ -6,8 +6,6 @@ else
 	set backup
 endif
 
-"设置一个快捷键
-let mapleader = ","
 
 set modelines=0 " CVE-2007-2438
 
