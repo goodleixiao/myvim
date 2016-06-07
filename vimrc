@@ -71,13 +71,15 @@ if exists(':Bundle')
     Bundle 'SirVer/ultisnips.git'
     Bundle 'mattn/emmet-vim'
     Bundle 'stephenmckinney/vim-dochub'
-    "Bundle 'hsanson/vim-android'
+    Bundle 'hsanson/vim-android'
+	Bundle "klen/python-mode"
     Bundle 'vim-scripts/javacomplete'
     Bundle 'nathanaelkane/vim-indent-guides.git'
     Bundle 'Lokaltog/vim-powerline.git'
     Bundle 'fholgado/minibufexpl.vim.git'
     Bundle 'majutsushi/tagbar.git'
     Bundle 'altercation/vim-colors-solarized.git'
+	Bundle 'Valloric/YouCompleteMe.git'
 end
 "}}}
 
